@@ -11,7 +11,7 @@ function Footer() {
         rel="noopener noreferrer"
         className="github-link"
       >
-        <FaGithub className="github-icon" />
+     <a href="https://github.com/devdeep2003/BhramanPlanner">  <FaGithub className="github-icon" /></a> 
       </a>
       <p className="project-name">भ्रमनPlanner</p>
       <p className="project-name">©️</p>
