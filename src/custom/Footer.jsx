@@ -6,12 +6,12 @@ function Footer() {
   return (
     <footer className="footer">
       <a
-        href="https://github.com/your-repo"
+        href="https://github.com/devdeep2003/BhramanPlanner"
         target="_blank"
         rel="noopener noreferrer"
         className="github-link"
       >
-     <a href="https://github.com/devdeep2003/BhramanPlanner">  <FaGithub className="github-icon" /></a> 
+     <FaGithub className="github-icon" />
       </a>
       <p className="project-name">भ्रमनPlanner</p>
       <p className="project-name">©️</p>
