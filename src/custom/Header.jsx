@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
-
+  const navigate = useNavigate();
   const login = useGoogleLogin({
     onSuccess: (coderesp) => getUserInfo(coderesp),
     onError: (err) => console.log(err),
@@ -67,6 +67,7 @@ function Header() {
                 onClick={() => {
                   googleLogout();
                   localStorage.clear();
+                    navigate("/");
                   window.location.reload();
                 }}
               >
