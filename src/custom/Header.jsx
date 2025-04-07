@@ -76,8 +76,8 @@ function Header() {
 
         {user ? (
           <div className="p-3 gap-2 flex flex-row ">
-            <a href="/create-ai-trip"><Button variant="outline" className="rounded text-white">➕ Create Trip</Button></a>
-            <a href="/my-trips"><Button className="rounded">My Trips</Button></a>
+            <a href='/create-ai-trip'><Button variant="outline" className="rounded text-white">➕ Create Trip</Button></a>
+            <a href='/my-trips'><Button className="rounded">My Trips</Button></a>
             <Popover>
               <PopoverTrigger className="rounded text-white h-[35px] px-4 flex items-center justify-center">
                 {user?.given_name}
