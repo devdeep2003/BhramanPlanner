@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import {
@@ -7,6 +7,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -16,7 +17,6 @@ function Header() {
     onError: (err) => console.log(err),
   });
 
-
   const getUserInfo = (accessToken) => {
     axios
       .get(
@@ -24,12 +24,11 @@ function Header() {
         {
           headers: {
             Authorization: `Bearer ${accessToken?.access_token}`,
-            Accept: "Application/json",
+            Accept: "application/json",
           },
         }
       )
       .then((resp) => {
-        console.log(resp);
         localStorage.setItem("user", JSON.stringify(resp.data));
         window.location.reload();
       })
@@ -39,54 +38,38 @@ function Header() {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "10px 20px",
-        }}
-      >
-        {/* Logo and Text on the left */}
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src="/logo_main.png"
-            alt="Logo"
-            style={{ height: "28px", width: "32px", paddingRight: "5px" }}
-          />
-          <p
-            style={{
-              fontSize: "20px",
-              fontWeight: "600",
-              color: "#333",
-              paddingTop: "12px",
-            }}
-          >
-            भ्रमनPlanner
-          </p>
+    <div className="bg-white shadow-md">
+      <div className="flex justify-between items-center px-5 py-2">
+        {/* Logo and Text */}
+        <div className="flex items-center">
+          <img src="/logo_main.png" alt="Logo" className="h-7 w-8 mr-2" />
+          <p className="text-xl font-semibold text-gray-800 pt-2">भ्रमनPlanner</p>
         </div>
 
-        {/* Sign In Button on the right */}
-
+        {/* Right Side */}
         {user ? (
-          <div className="p-3 gap-2 flex flex-row ">
-            <a href='/create-ai-trip'><Button variant="outline" className="rounded text-white">➕ Create Trip</Button></a>
-            <a href='/my-trips'><Button className="rounded">My Trips</Button></a>
+          <div className="flex items-center gap-3 p-2">
+            <Link to="/create-ai-trip">
+              <Button variant="outline" className="rounded text-white">
+                ➕ Create Trip
+              </Button>
+            </Link>
+            <Link to="/my-trips">
+              <Button className="rounded">My Trips</Button>
+            </Link>
+
             <Popover>
-              <PopoverTrigger className="rounded text-white h-[35px] px-4 flex items-center justify-center">
+              <PopoverTrigger className="rounded text-white h-[35px] px-4 flex items-center justify-center bg-black hover:bg-gray-700">
                 {user?.given_name}
               </PopoverTrigger>
-              <PopoverContent className="hover:cursor-pointer" onClick={()=>{
-                googleLogout();
-                localStorage.clear();
-                window.location.reload();
-              }}>
+              <PopoverContent
+                className="cursor-pointer"
+                onClick={() => {
+                  googleLogout();
+                  localStorage.clear();
+                  window.location.reload();
+                }}
+              >
                 Logout
               </PopoverContent>
             </Popover>
@@ -94,19 +77,7 @@ function Header() {
         ) : (
           <Button
             variant="outline"
-            style={{
-              padding: "8px 24px",
-              fontSize: "18px",
-              fontWeight: "500",
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-              transition: "background 0.3s",
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#333")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "black")}
+            className="px-6 py-2 text-lg font-medium bg-black text-white rounded-md hover:bg-gray-800"
             onClick={login}
           >
             Sign In
