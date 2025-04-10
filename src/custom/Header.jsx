@@ -86,6 +86,13 @@ function Header() {
         )}
       </div>
     </div>
+    {/* Marquee Message */}
+<div className="bg-yellow-100 border-t border-b border-yellow-400 text-yellow-800 px-4 py-2 overflow-hidden whitespace-nowrap">
+  <div className="inline-block animate-marquee">
+    If you encounter an error (such as a 404), please click the browser’s back button once or go back once on your phone, then reload the page. The issue should resolve automatically. Thank you for your patience.
+  </div>
+</div>
+
   );
 }
 
