@@ -44,7 +44,7 @@ function Header() {
         <div className="flex items-center">
           <img src="/logo_main.png" alt="Logo" className="h-7 w-8 mr-2" />
           <p className="text-xl font-semibold text-gray-800 pt-2">
-            भ्रमनPlanner
+            भ्रमणPlanner
           </p>
         </div>
 
