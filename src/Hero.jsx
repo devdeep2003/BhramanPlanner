@@ -6,7 +6,7 @@ function Hero() {
   return (
     <div className="mt-5 bg-white text-gray-800 text-center py-20 px-5">
       <h1 className="text-5xl font-bold mb-4 text-gray-900">
-        Welcome to <span className="text-blue-600 font-bold">भ्रमन</span><span className="text-blue-600">Planner</span>
+        Welcome to <span className="text-blue-600 font-bold">भ्रमण</span><span className="text-blue-600">Planner</span>
       </h1>
       <p className="text-2xl max-w-xl mx-auto mb-6 leading-relaxed text-gray-600 font-semibold">
         Plan smarter, travel better—let AI be your personal trip guide!
