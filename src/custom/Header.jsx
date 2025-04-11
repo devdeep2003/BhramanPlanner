@@ -7,11 +7,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
-
+  const navigate = useNavigate();
   const login = useGoogleLogin({
     onSuccess: (coderesp) => getUserInfo(coderesp),
     onError: (err) => console.log(err),
@@ -43,7 +43,9 @@ function Header() {
         {/* Logo and Text */}
         <div className="flex items-center">
           <img src="/logo_main.png" alt="Logo" className="h-7 w-8 mr-2" />
-          <p className="text-xl font-semibold text-gray-800 pt-2">भ्रमनPlanner</p>
+          <p className="text-xl font-semibold text-gray-800 pt-2">
+            भ्रमनPlanner
+          </p>
         </div>
 
         {/* Right Side */}
@@ -67,6 +69,7 @@ function Header() {
                 onClick={() => {
                   googleLogout();
                   localStorage.clear();
+                  navigate("/");
                   window.location.reload();
                 }}
               >
@@ -83,6 +86,26 @@ function Header() {
             Sign In
           </Button>
         )}
+      </div>
+      <div className=" mb-[30px] bg-yellow-100 border-t border-b border-yellow-400 text-yellow-800 px-4 py-2 overflow-hidden whitespace-nowrap ">
+        <div className="inline-block" style={{
+      animation: 'marquee 15s linear infinite',
+      whiteSpace: 'nowrap',
+    }}>
+          If you encounter an error (such as a 404), please click the browser's
+          back button once or go back once on your phone, then reload the page.
+          The issue should resolve automatically. Thank you for your patience.
+        </div>
+        <style jsx>{`
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  `}</style>
       </div>
     </div>
   );
